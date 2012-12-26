@@ -1,7 +1,7 @@
 cover
 =====
 
-Computes a set (a union of cosed intervals) covering the roots of a mathematical function
+Computes a set (a union of closed intervals) covering the roots of a mathematical function
 
 Basic idea
 ==========
