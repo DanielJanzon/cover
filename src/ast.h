@@ -18,6 +18,7 @@ CLINKAGE struct ast *ast_new_quote(struct ast *a, struct ast *b);
 CLINKAGE struct ast *ast_new_negation(struct ast *a);
 
 CLINKAGE void ast_free(struct ast *a);
+CLINKAGE double ast_eval(struct ast *a);
 
 struct ast_binary_op {
   struct ast *a;

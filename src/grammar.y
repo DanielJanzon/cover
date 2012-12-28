@@ -36,8 +36,7 @@ void yyerror(char *fmt, ...) {
 %%
 command:
   | command expression EOL {
-        printf("parsed complete expression\n");
-        g_command = $2;
+        printf("parsed complete expression: %lf\n", ast_eval($2));
     }
 ;
 

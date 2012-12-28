@@ -1,4 +1,6 @@
 #include <cstdlib>
+#include <cmath>
+#include <iostream>
 
 #include "ast.h"
 
@@ -67,3 +69,31 @@ extern "C" struct ast *ast_new_negation(struct ast *a)
 extern "C" void ast_free(struct ast *a)
 {
 }
+
+extern "C" double ast_eval(struct ast *a)
+{
+  switch(a->node_type) {
+    case AST_TYPE_NUMBER: {
+      return a->value.number;
+    }
+    case AST_TYPE_SUM: {
+      return ast_eval(a->value.sum.a) + ast_eval(a->value.sum.b);
+    }
+    case AST_TYPE_SUBTRACTION: {
+      return ast_eval(a->value.subtraction.a) - ast_eval(a->value.subtraction.b);
+    }
+    case AST_TYPE_PRODUCT: {
+      return ast_eval(a->value.product.a) * ast_eval(a->value.product.b);
+    }
+    case AST_TYPE_QUOTE: {
+      return ast_eval(a->value.quote.a) / ast_eval(a->value.quote.b);
+    }
+    case AST_TYPE_NEGATION: {
+      return -ast_eval(a->value.negation);
+    }
+      default: std::cout << "error: unhandled node type " << a->node_type << std::endl;
+      return NAN;
+    }
+}
+
+ 
