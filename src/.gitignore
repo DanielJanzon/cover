@@ -1,0 +1,6 @@
+*.o
+grammar-generated.c
+grammar-generated.h
+tokenizer-generated.c
+cover
+
